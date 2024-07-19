@@ -11,7 +11,7 @@ WEBHOOK_URL = os.environ["DISCORD_WEBHOOK"]
 
 def lambda_handler(event, context):
     # Send a GET request to the URL
-    response = requests.get(URL, verify=False, timeout=5)
+    response = requests.get(URL, timeout=5)
 
     # Check if the request was successful
     if response.status_code == 200:
@@ -38,7 +38,7 @@ def lambda_handler(event, context):
         msg += f"\n{'\n'.join(redeem_codes)}"
 
         # Print out the redeem codes
-        requests.post(WEBHOOK_URL, json={"content": msg}, verify=False, timeout=10)
+        requests.post(WEBHOOK_URL, json={"content": msg}, timeout=5)
     else:
         print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
 
