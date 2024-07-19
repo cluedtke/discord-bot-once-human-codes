@@ -5,7 +5,7 @@ resource "null_resource" "ci_build" {
   }
 
   provisioner "local-exec" {
-    command = <<EOT
+    command     = <<EOT
       rm -rf ci
       mkdir ci
       cp lambda.py ci/lambda_function.py
@@ -36,6 +36,8 @@ resource "aws_lambda_function" "lambda" {
   environment {
     variables = {
       DISCORD_WEBHOOK = sensitive(var.discord_webhook)
+      S3_BUCKET       = aws_s3_bucket.once_human_codes.bucket
+      S3_KEY          = aws_s3_object.once_human_codes_object.key
     }
   }
 
@@ -100,7 +102,7 @@ resource "aws_iam_role_policy_attachment" "lambda_exec_policy" {
 }
 
 resource "aws_iam_policy" "lambda_role_policy" {
-  name       = "${local.app_name}-policy"
+  name        = "${local.app_name}-role-policy"
   description = "Policy for Lambda to read/write to S3"
 
   policy = <<EOF

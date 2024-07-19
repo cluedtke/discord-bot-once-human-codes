@@ -9,6 +9,8 @@
           "console": "integratedTerminal",
           "env": {
             "AWS_PROFILE": "free",
+            "S3_BUCKET": "once-human-codes",
+            "S3_KEY": "codes.txt",
             "DISCORD_WEBHOOK": "{{placeholder}}"
           }
       }
