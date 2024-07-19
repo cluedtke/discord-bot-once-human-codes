@@ -1,0 +1,19 @@
+# Terraform
+.terraform
+.terraform.lock.hcl
+terraform.tfstate.backup
+
+# Virtual Environment
+.venv
+venv
+
+# Secrets
+credentials.yml
+.env
+
+# CI
+ci
+lambda_function.zip
+
+# Other
+.DS_Store

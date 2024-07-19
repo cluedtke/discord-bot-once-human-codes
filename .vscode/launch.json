@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "Python: Lambda Function",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "${workspaceFolder}/lambda.py",
+          "console": "integratedTerminal",
+          "env": {
+            "AWS_PROFILE": "free",
+            "DISCORD_WEBHOOK": "{{placeholder}}"
+          }
+      }
+  ]
+}
