@@ -51,7 +51,7 @@ def lambda_handler(event, context):
             # Update the S3 object with the new codes
             s3.put_object(Bucket=S3_BUCKET, Key=S3_KEY, Body=msg)
 
-            # Parse new codes
+            # Parse added and removed codes
             redeem_codes = msg.split("\n")[1:]
             added_codes = set(redeem_codes) - set(codes_in_s3.split("\n")[1:])
             removed_codes = set(codes_in_s3.split("\n")[1:]) - set(redeem_codes)

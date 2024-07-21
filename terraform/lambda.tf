@@ -58,7 +58,7 @@ resource "aws_cloudwatch_event_rule" "cron_schedule" {
   name        = "${local.app_name}-schedule"
   description = "Schedule for Discord Bot"
 
-  schedule_expression = "rate(1 day)"
+  schedule_expression = "cron(0 14 * * ? *)" #8am CST
 }
 
 resource "aws_cloudwatch_event_target" "cron_target" {
